@@ -1,8 +1,19 @@
+<!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css"/>
     <title>SM Explorer</title>
   </head>
   <body>
+    <header>
+      <h1>SM Explorer</h1>
+    </header>
+    <section id="main">
+    {% block app_content %}
+    {% endblock %}
+    </section>
+    <footer>
+      <p>Powered by Django</p>
+    </footer>
   </body>
 </html>
