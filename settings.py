@@ -1,6 +1,7 @@
 # Django settings for sme project.
 
 import os.path
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -111,6 +112,8 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
 
 INSTALLED_APPS = (
     'django.contrib.auth',
