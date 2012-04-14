@@ -1,5 +1,3 @@
-import zipfile
-
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 from boto.s3.bucket import Bucket
@@ -12,7 +10,7 @@ def upload_file(local_path, remote_path):
     bucket = Bucket(conn, BUCKET_NAME)
     key = Key(bucket, remote_path)
     key.set_contents_from_file(file(local_path))
-    """key.set_acl('public-read')"""
+    key.set_acl('public-read')
 
 def prepare_archive(path):
     " prepare root.zip's for the path"
