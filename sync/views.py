@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template.loader import get_template
 from django.views.decorators.csrf import csrf_exempt
 
-from explorer.models import File
+from explorer.models import File, Directory
 
 import filesystem as fs
 import storage_s3
@@ -11,12 +11,23 @@ import storage_s3
 @csrf_exempt
 def handle_upload(request):
     if request.method == 'POST':
-        path = request.POST['path']
+        remote_path = request.POST['path']
         f = request.FILES['file']
-        temp_path = fs.save_from_upload(path, f)
-        storage_s3.upload_file(temp_path, path)
-        new_file = File(name=fs.file_name(path), path=fs.parent_path(path))
+        temp_path = fs.save_from_upload(remote_path, f)
+        file_info = fs.file_info(temp_path)
+        print file_info['last_modified']
+        remote_parent = fs.parent_path(remote_path)
+        try:
+            remote_dir = Directory.objects.get(path=remote_parent)
+        except:
+            remote_dir = Directory(path=remote_parent)
+            remote_dir.save()
+
+        new_file = File(name=file_info['name'], path=remote_dir,
+                    size=file_info['size'],
+                    last_modified=file_info['last_modified'])
         new_file.save()
+        storage_s3.upload_file(temp_path, remote_path)
         response = render(request, 'response.xml',
                     {'status': '1', 'message': 'File uploaded successfully.'},
                     content_type='text/xml')

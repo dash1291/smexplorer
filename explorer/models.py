@@ -4,11 +4,10 @@ class Directory(models.Model):
     path = models.TextField(primary_key=True)
 
 class File(models.Model):
-    id = models.BigIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.TextField()
     path = models.ForeignKey(Directory)
     size = models.IntegerField()
-    last_edited = models.DateTimeField()
-    created = models.DateTimeField()
+    last_modified = models.DateTimeField()
 
 # Create your models here.

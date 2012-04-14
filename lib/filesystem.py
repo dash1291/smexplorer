@@ -1,11 +1,13 @@
 import re
+import os.path
+from datetime import date
 
 from settings import TEMP_FILE_STORE
 
 def parent_path(path):
     if path[-1] == '/':
         path = path[:-1]
-    parent_path = re.sub('/[A-Za-z0-9-]+$','', path)
+    parent_path = re.sub('/[A-Za-z0-9-.]+$','', path)
     return parent_path
 
 def file_name(path):
@@ -19,3 +21,13 @@ def save_from_upload(path, file_obj):
         fp.write(chunk)
     fp.close()
     return temp_path
+
+def get_mod_date(path):
+    epoch_seconds = os.path.getmtime(path)
+    return date.fromtimestamp(epoch_seconds)
+
+def file_info(path):
+    return {'name': file_name(path),
+            'path': parent_path(path),
+            'last_modified': get_mod_date(path),
+            'size': os.path.getsize(path)}
