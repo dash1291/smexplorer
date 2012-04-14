@@ -114,6 +114,7 @@ TEMPLATE_DIRS = (
 )
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
+TEMP_FILE_STORE = os.path.join(os.path.dirname(__file__), 'tmp')
 
 INSTALLED_APPS = (
     'django.contrib.auth',

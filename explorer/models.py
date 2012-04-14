@@ -6,7 +6,7 @@ class Directory(models.Model):
 class File(models.Model):
     id = models.BigIntegerField(primary_key=True)
     name = models.TextField()
-    path = models.ForeignKey(directory)
+    path = models.ForeignKey(Directory)
     size = models.IntegerField()
     last_edited = models.DateTimeField()
     created = models.DateTimeField()
