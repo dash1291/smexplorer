@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+  {% block app_content %}
+    {% for dir in dirs %}
+    <div id="{{ dir.path }}" class="directory-item">{{ dir.name }}</div>
+    {% endfor %}
+    {% for file in files %}
+    <div id="{{ file.path }}" class="file-item">{{ file.name }}</div>
+    {% endfor %}
+  {% endblock %}

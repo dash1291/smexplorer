@@ -25,11 +25,13 @@ def handle_upload(request):
         except:
             remote_dir = Directory(path=remote_parent)
             remote_dir.save()
-
-        new_file = File(name=file_info['name'], path=remote_dir,
-                    size=file_info['size'],
-                    last_modified=last_modified)
-        new_file.save()
+        try:
+            tmp_file = File.objects.get(name=file_info['name'], path=remote_dir)
+        except:
+            new_file = File(name=file_info['name'], path=remote_dir,
+                        size=file_info['size'],
+                        last_modified=last_modified)
+            new_file.save()
         storage_s3.upload_file(temp_path, remote_path)
         response = render(request, 'response.xml',
                     {'status': '1', 'message': 'File uploaded successfully.'},
