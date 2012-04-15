@@ -15,7 +15,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sme',                      # Or path to database file if using sqlite3.
+        'NAME': '/home/ashish/repos/sme/sme',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -116,6 +116,7 @@ TEMPLATE_DIRS = (
 sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
 TEMP_FILE_STORE = os.path.join(os.path.dirname(__file__), 'tmp')
 REMOTE_PREFIX = "https://s3.amazonaws.com/smecloudstore/"
+#REMOTE_PREFIX = "/store/"
 
 INSTALLED_APPS = (
     'django.contrib.auth',
