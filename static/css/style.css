@@ -1,1 +1,9 @@
-body{ } 
+body{ }
+a {   
+  color: #297ACC;
+  text-decoration: none;
+}
+a:hover {
+  color: #669999;
+}
+

@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from explorer.models import File, Directory
+from settings import REMOTE_PREFIX
 import filesystem as fs
 
 def index(request):
@@ -24,12 +25,13 @@ def view_directory(request, path):
     except:
         pass
     for single in dirs:
-        context_dirs.append({'dir_path': single.path,
+        context_dirs.append({'path': single.path,
             'name': fs.file_name(single.path)})
     files = File.objects.filter(path=d)
     for single in files:
-        context_files.append({'file_path': single.path,
+        file_path = single.path.path + '/' + single.name
+        context_files.append({'path': file_path,
             'name': single.name})
-    response = render(request, 'directory.html', {'dirs': context_dirs,
+    response = render(request, 'directory.html', {'remote': REMOTE_PREFIX, 'dirs': context_dirs,
                   'files': context_files})
     return response

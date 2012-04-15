@@ -1,9 +1,13 @@
 {% extends "base.html" %}
   {% block app_content %}
     {% for dir in dirs %}
-    <div id="{{ dir.path }}" class="directory-item">{{ dir.name }}</div>
+    <div id="{{ dir.path }}" class="directory-item">
+      <a href="/explorer/dir/{{ dir.path }}">{{ dir.name }}</a>
+    </div>
     {% endfor %}
     {% for file in files %}
-    <div id="{{ file.path }}" class="file-item">{{ file.name }}</div>
+    <div id="{{ file.path }}" class="file-item">
+      <a href="{{ remote }}{{ file.path }}">{{ file.name }}</a>
+      </div>
     {% endfor %}
   {% endblock %}

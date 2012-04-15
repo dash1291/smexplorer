@@ -115,6 +115,7 @@ TEMPLATE_DIRS = (
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
 TEMP_FILE_STORE = os.path.join(os.path.dirname(__file__), 'tmp')
+REMOTE_PREFIX = "https://s3.amazonaws.com/smecloudstore/"
 
 INSTALLED_APPS = (
     'django.contrib.auth',
