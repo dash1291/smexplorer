@@ -39,18 +39,15 @@ def handle_upload(request):
                    content_type='text/xml')
     return response
 
-@csrf_except
-def handle_delete():
+@csrf_exempt
+def handle_delete(request):
     if request.method == 'POST': 
         remote_path = request.POST['path']
-        date_str = request.POST['last_modified']
-        last_modified = datetime.strptime(date_str, '%Y-%m-%d')
         name = fs.file_name(remote_path)
         remote_parent = fs.parent_path(remote_path)
         try:
             remote_dir = Directory.objects.get(path=remote_parent)
             tmp_file = File.objects.get(name=name, path=remote_dir)
-            new_file.save()
             response = render(request, 'response.xml',
                         {'status': '1', 'message': 'File delete succesfully.'},
                         content_type='text/xml')
