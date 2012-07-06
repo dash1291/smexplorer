@@ -2,7 +2,7 @@
   {% block app_content %}
     {% for dir in dirs %}
     <div id="{{ dir.path }}" class="directory-item">
-      <a href="./{{ dir.path }}">{{ dir.name }}/</a>
+			<a href="{{ site_prefix }}/dir/{{ dir.path }}">{{ dir.name }}/</a>
     </div>
     {% endfor %}
     {% for file in files %}

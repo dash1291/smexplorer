@@ -6,9 +6,9 @@ from django.shortcuts import render
 from django.template.loader import get_template
 from django.views.decorators.csrf import csrf_exempt
 
-from explorer.models import File
+from explorer.models import File, Directory
 
-import filesystem as fs, Directory
+import filesystem as fs
 import storage_s3
 
 @csrf_exempt

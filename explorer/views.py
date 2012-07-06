@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from explorer.models import File, Directory
-from settings import REMOTE_PREFIX
+from settings import REMOTE_PREFIX, SITE_PREFIX
 import filesystem as fs
 
 def index(request):
@@ -15,7 +15,7 @@ def view_directory(request, path):
     context_dirs = []
     dirs = []
     files = []
-    path_regex = '^' + path + '/[A-Za-z0-9-.]+$'
+    path_regex = '^' + path + '/[^/]+$'
     try:
         d = Directory.objects.get(path=path)
     except:
