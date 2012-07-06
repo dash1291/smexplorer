@@ -7,11 +7,11 @@ from settings import TEMP_FILE_STORE
 def parent_path(path):
     if path[-1] == '/':
         path = path[:-1]
-    parent_path = re.sub('/[A-Za-z0-9-. ]+$','', path)
+    parent_path = re.sub('/[^/]+$','', path)
     return parent_path
 
 def file_name(path):
-    search = re.search('/[A-Za-z0-9-. ]+$', path)
+    search = re.search('/[^/]+$', path)
     return search.group(0)[1:]
 
 def save_from_upload(path, file_obj):
