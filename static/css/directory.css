@@ -1,0 +1,49 @@
+.directories-container {
+	border-bottom: 1px solid #eee;
+}
+
+.directory-item {
+	border: 1px solid #eee;
+	border-bottom: 0px;
+	transition: background-color 2s;
+	-webkit-transition: background-color 2s;
+	-moz-transition: background-color 2s;
+	-o-transition: background-color 2s;
+}
+
+.directory-item :hover {
+	transition: background-color 1s;
+	-webkit-transition: background-color 1s;
+	-moz-transition: background-color 1s;
+	-o-transition: background-color 1s;
+	background-color: #F1F1FF;
+}
+
+.file-link, .dir-link {	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	display: block;
+	height: 100%;
+}
+
+.dir-link {
+	color: #999;
+}
+
+.file-item {
+	border: 1px solid #eee;
+	border-bottom: 0px;
+	transition: background-color 2s;
+	-webkit-transition: background-color 2s;
+	-moz-transition: background-color 2s;
+	-o-transition: background-color 2s;
+}
+
+.file-item :hover {
+	transition: background-color 1s;
+	-webkit-transition: background-color 1s;
+	-moz-transition: background-color 1s;
+	-o-transition: background-color 1s;
+	background-color: #F1F1FF;
+}

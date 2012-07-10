@@ -1,13 +1,18 @@
 {% extends "base.html" %}
+{% block includes %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/directory.css"/>
+{% endblock %}
   {% block app_content %}
-    {% for dir in dirs %}
+	{% for dir in dirs %}
+	<div class="directories-container">
     <div id="{{ dir.path }}" class="directory-item">
-			<a href="{{ site_prefix }}/dir/{{ dir.path }}">{{ dir.name }}/</a>
+			<a class="dir-link" href="{{ site_prefix }}/dir/{{ dir.path }}">{{ dir.name }}/</a>
     </div>
     {% endfor %}
     {% for file in files %}
     <div id="{{ file.path }}" class="file-item">
-      <a href="{{ remote }}{{ file.path }}">{{ file.name }}</a>
-      </div>
-    {% endfor %}
+      <a class="file-link" href="{{ remote }}{{ file.path }}">{{ file.name }}</a>
+    </div>
+			{% endfor %}
+	</div>
   {% endblock %}

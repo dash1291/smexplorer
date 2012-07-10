@@ -1,4 +1,7 @@
-body{ }
+body {
+	width:960px;
+	margin-left: 200px;
+}
 a {   
   color: #297ACC;
   text-decoration: none;

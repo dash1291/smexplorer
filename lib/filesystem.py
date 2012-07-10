@@ -20,6 +20,7 @@ def save_from_upload(path, file_obj):
     for chunk in file_obj.chunks():
         fp.write(chunk)
     fp.close()
+    print temp_path
     return temp_path
 
 def get_mod_date(path):
