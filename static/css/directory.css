@@ -47,3 +47,7 @@
 	-o-transition: background-color 1s;
 	background-color: #F1F1FF;
 }
+
+#breadcrumb {
+	margin: 10px;
+}

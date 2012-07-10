@@ -32,6 +32,7 @@ def view_directory(request, path):
         file_path = single.path.path + '/' + single.name
         context_files.append({'path': file_path,
             'name': single.name})
-    response = render(request, 'directory.html', {'remote': REMOTE_PREFIX, 'dirs': context_dirs,
-                  'files': context_files})
+        response = render(request, 'directory.html', {'dir_path': path, 
+            'remote': REMOTE_PREFIX, 'dirs': context_dirs,
+            'files': context_files})
     return response
