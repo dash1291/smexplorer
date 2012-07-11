@@ -51,3 +51,12 @@
 #breadcrumb {
 	margin: 10px;
 }
+
+#search-overlay {
+	position: absolute;
+	display: none;
+	background-color: white;
+	z-index: 10;
+	height: 100%;
+	width: 100%;
+}

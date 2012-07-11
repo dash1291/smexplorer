@@ -5,11 +5,18 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/directory.js"></script>
 <link rel="stylesheet" href="{{ STATIC_URL }}css/directory.css"/>
 {% endblock %}
-  {% block app_content %}
+{% block app_content %}
+	<div id="search">
+		<span>Search</span>
+		<input id="search-text" type="text" size="15"/>
+	</span>
+	</div>
+	<div id="breadcrumb"></div>
+	<div id="search-overlay"></div>
 	<div class="directories-container">
 		<input type="hidden" id="dir-path" value="{{ dir_path }}"/>
-		<input type="hidden" id="site-prefix" value="{{ site_prefix }}/dir"/>
-		<div id="breadcrumb"></div>
+		<input type="hidden" id="site-prefix" value="{{ site_prefix }}"/>
+		<input type="hidden" id="remote-prefix" value="{{ remote }}"/>
 	{% for dir in dirs %}
     <div id="{{ dir.path }}" class="directory-item">
 			<a class="dir-link" href="{{ site_prefix }}/dir/{{ dir.path }}">{{ dir.name }}/</a>

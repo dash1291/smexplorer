@@ -1,3 +1,6 @@
+import json
+import re
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -36,3 +39,24 @@ def view_directory(request, path):
             'remote': REMOTE_PREFIX, 'dirs': context_dirs,
             'files': context_files})
     return response
+
+def search(request, text):
+    keywords = text.split(' ')
+    regex = ''
+    for keyword in keywords:
+        regex = regex + keyword + '|'
+    regex = regex[:-1]
+    dirs = Directory.objects.filter(path__iregex=regex)
+    files = File.objects.filter(name__iregex=regex)
+    res_dirs = []
+    res_files = []
+
+    for dir in dirs:
+        folder_name = fs.file_name(dir.path)
+        if re.search(regex, folder_name, re.I):
+            res_dirs.append({'path': dir.path, 'name': fs.file_name(dir.path)})
+    for file in files:
+        res_files.append({'path': file.path.path, 'name': file.name})
+    json_obj = {'directories': res_dirs, 'files': res_files}
+    json_str = json.dumps(json_obj)
+    return HttpResponse(json_str, content_type='application/json')
