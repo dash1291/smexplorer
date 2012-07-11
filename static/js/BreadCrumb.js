@@ -14,10 +14,14 @@
 		var dirTokens = path.split('/');
 		var traversed = '';
 		for( i in dirTokens ) {
-			var element = '<a href="' + prefix + '/' + traversed + dirTokens[i] +
-										'">' + dirTokens[i] + '</a> > '
+			if( i < dirTokens.length - 1 ) {
+				var element = '<a href="' + prefix + '/' + traversed + dirTokens[i] +
+											'">' + dirTokens[i] + '</a> > ';
+			}
+			else {
+				var element = '<span id="breadcrumb-leaf">' + dirTokens[i] + '</span>';
+			}
 			traversed = traversed + dirTokens[i] + '/';
-			console.log(element);
 			$( this ).append( element );
 		}
 	};

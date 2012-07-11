@@ -5,12 +5,34 @@ $( document ).ready( function() {
 	$( '#breadcrumb' ).BreadCrumb( dirPath, sitePrefix + '/dir' );
 	
 	var searchTimeout = null;
+	var firstSearch = true;
 	$( '#search-text' ).keyup( function() {
 		var text = this.value;
 		if( searchTimeout ) {
 			clearTimeout( searchTimeout );
 		}
-		searchTimeout = setTimeout( function () {
+		searchTimeout = setTimeout( function() {
+			if( firstSearch ) {
+				$( '#breadcrumb-leaf' ).wrap( '<a href="#"/>' );
+				firstSearch = false;
+				$( '#breadcrumb' ).append( ' > <a id="search-breadcrumb" class="link-disabled">Search</a>' )
+				$( '#breadcrumb-leaf' ).click( function() {
+					$( '#search-overlay' ).hide();
+					$( '#search-breadcrumb' ).attr( 'href', '#' )
+					$( this ).parent().removeAttr( 'href' );
+					$( this ).parent().addClass( 'link-disabled' );
+					$( '#search-breadcrumb' ).removeClass( 'link-disabled' );
+				});
+		
+			$( '#search-breadcrumb' ).click( function() {
+					$( '#search-overlay' ).show();
+					$( '#breadcrumb-leaf' ).parent().attr( 'href', '#' )
+					$( this ).removeAttr( 'href' );
+					$( this ).addClass( 'link-disabled' );
+					$( '#breadcrumb-leaf' ).parent().removeClass( 'link-disabled' );
+				});
+			}
+	
 			var searchUri = sitePrefix + '/search/' + text;
 			console.log(searchUri);
 			$.get( searchUri, function( data ) {
