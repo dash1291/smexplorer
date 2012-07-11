@@ -1,7 +1,17 @@
+html {
+	height: 100%;
+}
 body {
 	width:960px;
 	margin-left: 200px;
+	height: 100%;
 }
+
+#wrap {
+	margin-bottom: 0px;
+	min-height: 90%;
+}
+
 a {   
   color: #297ACC;
   text-decoration: none;
@@ -9,4 +19,5 @@ a {
 a:hover {
   color: #669999;
 }
-
+footer {
+}

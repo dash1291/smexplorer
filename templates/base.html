@@ -6,16 +6,18 @@
 		{% endblock %}
     <title>SM Explorer</title>
   </head>
-  <body>
-    <header>
-      <h1>SM Explorer</h1>
-    </header>
-    <section id="main">
-    {% block app_content %}
-    {% endblock %}
-    </section>
-    <footer>
-      <p>Powered by Django</p>
-    </footer>
+	<body>
+		<div id="wrap">
+			<header>
+				<h1>SM Explorer</h1>
+			</header>
+			<section id="main">
+			{% block app_content %}
+			{% endblock %}
+			</section>
+		</div>
+		<footer>
+			<p>Powered by Django</p>
+		</footer>
   </body>
 </html>
