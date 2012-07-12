@@ -1,5 +1,6 @@
 import re
 import os.path
+import shutil
 from datetime import date
 
 from settings import TEMP_FILE_STORE
@@ -32,3 +33,4 @@ def file_info(path):
             'path': parent_path(path),
             'last_modified': get_mod_date(path),
             'size': os.path.getsize(path)}
+ 

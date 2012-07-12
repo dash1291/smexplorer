@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     (r'^$', index),
     (r'^dir/(?P<path>[\S ]+)$', view_directory),
-    (r'^search/(?P<text>[\S ]+)$', search),
+    (r'^search/(?P<text>[\S ]+)$', search), 
+    (r'^archive/(?P<path>[\S ]+)$', archive),
 )

@@ -2,11 +2,12 @@ import json
 import re
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from explorer.models import File, Directory
 from settings import REMOTE_PREFIX, SITE_PREFIX
 import filesystem as fs
+import storage_ebs as storage
 
 def index(request):
     response = render(request, 'index.html', {})
@@ -60,3 +61,8 @@ def search(request, text):
     json_obj = {'directories': res_dirs, 'files': res_files}
     json_str = json.dumps(json_obj)
     return HttpResponse(json_str, content_type='application/json')
+
+def archive(request, path):
+    zip_path = storage.create_archive(path)
+    print zip_path
+    return redirect(REMOTE_PREFIX + zip_path)

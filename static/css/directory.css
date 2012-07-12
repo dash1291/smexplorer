@@ -64,3 +64,12 @@
 .link-disabled {
 	color: black !important;
 }
+
+#dir-tools {
+	float: right;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+.clearfix {
+	clear: both;
+}
