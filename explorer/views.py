@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from explorer.models import File, Directory
-from settings import REMOTE_PREFIX, SITE_PREFIX
+from settings import REMOTE_PREFIX, SITE_PREFIX, APP_STORAGE_URL
 import filesystem as fs
 import storage_ebs as storage
 
@@ -37,7 +37,7 @@ def view_directory(request, path):
         context_files.append({'path': file_path,
             'name': single.name})
         response = render(request, 'directory.html', {'dir_path': path, 
-            'remote': REMOTE_PREFIX, 'dirs': context_dirs,
+            'remote': REMOTE_PREFIX + 'store', 'dirs': context_dirs,
             'files': context_files})
     return response
 
@@ -64,5 +64,4 @@ def search(request, text):
 
 def archive(request, path):
     zip_path = storage.create_archive(path)
-    print zip_path
-    return redirect(REMOTE_PREFIX + zip_path)
+    return redirect(APP_STORAGE_URL + zip_path)

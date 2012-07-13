@@ -115,7 +115,9 @@ TEMPLATE_DIRS = (
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
 TEMP_FILE_STORE = os.path.join(os.path.dirname(__file__), 'tmp')
-REMOTE_PREFIX = "https://s3.amazonaws.com/smecloudstore/"
+REMOTE_PREFIX = 'https://s3.amazonaws.com/smecloudstore/'
+APP_STORAGE_URL = '/store/'
+APP_STORAGE_PATH = './storage/'
 SITE_PREFIX = '/'
 #REMOTE_PREFIX = "/store/"
 
