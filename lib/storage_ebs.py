@@ -5,8 +5,8 @@ from settings import APP_STORAGE_PATH
 
 def upload_file(local_path, remote_path):
     dest = APP_STORAGE_PATH + 'files/' + remote_path
-    if not os.path.exists(os.path.dirname(remote_path)):
-        os.makedirs(os.path.dirname(remote_path))
+    if not os.path.exists(os.path.dirname(dest)):
+        os.makedirs(os.path.dirname(dest))
     shutil.move(local_path, dest)
 
 def create_archive(path):
