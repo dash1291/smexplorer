@@ -73,3 +73,17 @@
 .clearfix {
 	clear: both;
 }
+
+#search {
+	margin-bottom: 10px;
+	padding-left: 10px;
+}
+#search input {
+	border: 1px solid #aaa;
+	font-size: 10pt;
+	padding: 5px;
+}
+
+#search span {
+	color: #888;
+}
