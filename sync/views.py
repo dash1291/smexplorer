@@ -40,3 +40,27 @@ def handle_upload(request):
                    {'status': '0', 'message': 'Use POST for file uploads.'},
                    content_type='text/xml')
     return response
+
+@csrf_exempt
+def handle_delete(request):
+    if request.method == 'POST':
+        remote_path = request.POST['path']
+        name = request.POST['name']
+        try:
+            tmp_file = Files.objects.get(path=path, name=name)
+        except:
+            response = render(request, 'response.xml',
+                       {'status': '0', 'message': 'File not found.'},
+                       content_type='text/xml')
+            return response
+        tmp_file.delete()
+        response = render(request, 'response.xml',
+                   {'status': '1', 'message': 'File deleted.'},
+                   content_type='text/xml')
+
+    else:
+        response = render(request, 'response.xml',
+                   {'status': '0', 'message': 'Use POST for file delete.'},
+                   content_type='text/xml')
+    return response
+
