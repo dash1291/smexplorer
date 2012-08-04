@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from explorer.models import File, Directory
+from explorer.tasks import delete_archive
 from settings import REMOTE_PREFIX, SITE_PREFIX, APP_STORAGE_URL
 import filesystem as fs
 import storage_ebs as storage
@@ -65,4 +66,5 @@ def search(request, text):
 def archive(request, path):
     zip_path = storage.create_archive(path)
     response = SITE_PREFIX + APP_STORAGE_URL + zip_path
+    delete_archive(zip_path, countdown=100)
     return redirect(response)
