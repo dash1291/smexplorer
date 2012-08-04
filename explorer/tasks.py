@@ -1,5 +1,8 @@
-from settings import APP_STORE_PATH
+import os
 
-@task
+from settings import APP_STORAGE_PATH
+from celery import task
+
+@task()
 def delete_archive(zip_path):
-    os.remove(APP_STORE_PATH + zip_path)
+    os.remove(APP_STORAGE_PATH + zip_path)
