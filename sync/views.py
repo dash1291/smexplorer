@@ -8,7 +8,6 @@ from django.views.decorators.csrf import csrf_exempt
 from explorer.models import File, Directory
 
 import filesystem as fs
-import storage_s3
 import storage_ebs
 
 @csrf_exempt
