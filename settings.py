@@ -15,10 +15,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+APP_DIR = os.path.dirname(__file__)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/ashish/repos/sme/sme',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(APP_DIR, 'sme'),                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -75,7 +76,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'static'),
+    os.path.join(APP_DIR, 'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -110,14 +111,14 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'sme.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'templates'),
+    os.path.join(APP_DIR, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
 
-sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
-TEMP_FILE_STORE = os.path.join(os.path.dirname(__file__), 'tmp')
+sys.path.append(os.path.join(APP_DIR, 'lib'))
+TEMP_FILE_STORE = os.path.join(APP_DIR, 'tmp')
 REMOTE_PREFIX = 'https://s3.amazonaws.com/smecloudstore/'
 APP_STORAGE_URL = '/store/'
 APP_STORAGE_PATH = './storage/'
