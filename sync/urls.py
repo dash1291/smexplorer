@@ -17,4 +17,6 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     (r'^upload/$', handle_upload),
     (r'^delete/$', handle_delete),
+    (r'^bulk_upload/$', bulk_upload),
+    (r'^bulk_delete/$', bulk_delete)
 )

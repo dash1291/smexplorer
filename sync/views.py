@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -47,7 +48,7 @@ def handle_delete(request):
         except:
             response = render(request, 'response.xml',
                        {'status': '0', 'message': 'File not found.'},
-                       co ntent_type='text/xml')
+                       content_type='text/xml')
             return response
         tmp_file.delete()
         response = render(request, 'response.xml',
@@ -62,10 +63,14 @@ def handle_delete(request):
 
 @csrf_exempt
 def bulk_upload(request):
-	if request.method == 'POST':
+    if request.method == 'POST':
         report = []
-        file_data = request.POST['files']
-        files = json.loads(file_data)
+        file_data = request.FILES['file']
+        file_data_str = ''
+        for chunk in file_data.chunks():
+            file_data_str = file_data_str + chunk
+
+        files = json.loads(file_data_str)
 
         for entry in files:
             remote_path = entry['path']
