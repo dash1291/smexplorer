@@ -72,7 +72,7 @@ def bulk_upload(request):
             file_data_str = file_data_str + chunk
 
         files = json.loads(file_data_str)
-        bulk_upload_DB(files)
+        bulk_upload_DB.async_apply([files])
     response = HttpResponse('Done') 
     return response
 
