@@ -19,4 +19,3 @@ def bulk_upload_DB(files):
             new_file = File(name=name, path=remote_dir,
                     size=size, last_modified=last_modified)
             new_file.save()
-    return
