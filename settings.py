@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sme.explorer',
     'sme.sync',
-    'djcelery'
+    #'djcelery'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -165,4 +165,4 @@ LOGGING = {
 }
 
 BROKER_URL = 'redis://127.0.0.1:6379/0'
-CELERY_IMPORTS = ('explorer.tasks')
+CELERY_IMPORTS = ('explorer.tasks', 'sync.tasks',)
