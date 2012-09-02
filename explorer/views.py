@@ -11,7 +11,17 @@ import filesystem as fs
 import storage_ebs as storage
 
 def index(request):
-    response = render(request, 'index.html', {})
+    path_regex = '^' + '[^/]+$'
+    context_dirs = []
+    try:
+        dirs = Directory.objects.filter(path__regex=path_regex)
+    except:
+        pass
+    for single in dirs:
+        context_dirs.append({'path': single.path,
+            'name': fs.file_name('/' + single.path)})
+
+    response = render(request, 'index.html', {'dirs': context_dirs})
     return response
 
 def view_directory(request, path):

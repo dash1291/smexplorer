@@ -1,5 +1,12 @@
 {% extends "base.html" %}
+{% block includes %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/BreadCrumb.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/directory.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/directory.css"/>
+{% endblock %}
 {% block app_content %}
   <p>This is explorer app.</p>
+  {% include "folders.html" %}
 {% endblock %}
 

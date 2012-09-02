@@ -13,26 +13,6 @@
 	<div class="clearfix"/>
 
 	<div id="breadcrumb"></div>
-	<div id="search-overlay"></div>
-	<div class="directories-container">
-		<div id="dir-tools">
-			<div class="toolbox-item">
-				<a href="{{ site_prefix }}/archive/{{ dir_path }}" class="toolbox-option" id="download-zip">Download as Zip</a>
-			</div>
-		</div>
-		<div class="clearfix"/>
-		<input type="hidden" id="dir-path" value="{{ dir_path }}"/>
-		<input type="hidden" id="site-prefix" value="{{ site_prefix }}"/>
-		<input type="hidden" id="remote-prefix" value="{{ remote }}"/>
-	{% for dir in dirs %}
-    <div id="{{ dir.path }}" class="directory-item">
-			<a class="dir-link" href="{{ site_prefix }}/dir/{{ dir.path }}">{{ dir.name }}/</a>
-    </div>
-    {% endfor %}
-    {% for file in files %}
-    <div id="{{ file.path }}" class="file-item">
-      <a class="file-link" href="{{ remote }}{{ file.path }}">{{ file.name }}</a>
-    </div>
-			{% endfor %}
-	</div>
-  {% endblock %}
+  <div id="search-overlay"></div>
+  {% include "folders.html" %}
+{% endblock %}
