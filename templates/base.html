@@ -9,15 +9,18 @@
 	<body>
 		<div id="wrap">
 			<header>
-      <a href="{{ SITE_PREFIX }}/"><h1>SM Explorer</h1></a>
+      <a id="head-logo" href="{{ SITE_PREFIX }}/"><h1>SM Explorer</h1></a>
 			</header>
 			<section id="main">
 			{% block app_content %}
 			{% endblock %}
 			</section>
 		</div>
-		<footer>
-			<p>Powered by Django</p>
+    <footer>
+      <a href="http://opensource.jiitu.org">
+        <img id="org-logo" src="{{ STATIC_URL }}images/org_logo.png"/>
+      </a>  
+      <div class="clearfix"/>
 		</footer>
   </body>
 </html>

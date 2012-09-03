@@ -2,6 +2,7 @@ $( document ).ready( function() {
 	var dirPath = $( '#dir-path' ).val();
 	var sitePrefix = $( '#site-prefix' ).val();
 	var remotePrefix = $( '#remote-prefix' ).val();
+  $( '#breadcrumb' ).append( '<a href="' + sitePrefix + '/">Home</a> > ' );
 	$( '#breadcrumb' ).BreadCrumb( dirPath, sitePrefix + '/dir' );
 	
 	var searchTimeout = null;

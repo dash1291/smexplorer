@@ -2,15 +2,19 @@ html {
 	height: 100%;
 }
 body {
-	width:960px;
+	width: 960px;
 	margin-left: 200px;
 	height: 100%;
 }
 
+.clearfix {
+  clear: both;
+}
+
 #wrap {
 	margin-bottom: 0px;
-	min-height: 90%;
 	position: relative;
+  min-height: 75%;
 }
 
 a {   
@@ -20,9 +24,38 @@ a {
 a:hover {
   color: #669999;
 }
+
 #main {
 	position: relative;
 }
 
 footer {
+  position: relative;
+}
+
+#org-logo {
+  width: 120px;
+  height: 80px;
+  float: right;
+}
+
+#powered-by {
+  float: left;
+}
+
+#branding {
+  margin: 25px 0px 20px 0px;
+  font-size: 16pt;
+  line-height: 1.5em;
+  color: #888;
+  font-family: Georgia;
+}
+
+#head-logo {
+  font-family: Verdana;
+  color: #555;
+}
+
+#head-logo:hover {
+  color: #669999;
 }
