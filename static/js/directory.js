@@ -27,6 +27,7 @@ $( document ).ready( function() {
 		
 			$( '#search-breadcrumb' ).click( function() {
 					$( '#search-overlay' ).show();
+          $( '#directories-container' ).hide();
 					$( '#breadcrumb-leaf' ).parent().attr( 'href', '#' )
 					$( this ).removeAttr( 'href' );
 					$( this ).addClass( 'link-disabled' );
@@ -58,6 +59,7 @@ $( document ).ready( function() {
 					$( '#search-overlay' ).append( element );
 				}
 				$( '#search-overlay' ).show();
+        $( '#directories-container' ).hide();
 			});
 			// search now
 			searchTimeout = false;

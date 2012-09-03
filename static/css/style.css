@@ -1,10 +1,11 @@
 html {
 	height: 100%;
+  background-color: #EFEDEA;
 }
 body {
 	width: 960px;
 	margin-left: 200px;
-	height: 100%;
+  height: 100%;
 }
 
 .clearfix {
@@ -13,8 +14,7 @@ body {
 
 #wrap {
 	margin-bottom: 0px;
-	position: relative;
-  min-height: 75%;
+  min-height: 75%
 }
 
 a {   
@@ -30,7 +30,6 @@ a:hover {
 }
 
 footer {
-  position: relative;
 }
 
 #org-logo {

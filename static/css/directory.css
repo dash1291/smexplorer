@@ -57,8 +57,11 @@
 	display: none;
 	background-color: white;
 	z-index: 10;
-	height: 100%;
 	width: 100%;
+  -webkit-box-shadow: 0px 0px 10px #ccc;
+  -moz-box-shadow: 0px 0px 10px #ccc;
+  -o-box-shadow: 0px 0px 10px #ccc;
+  box-shadow: 0px 0px 10px #ccc;
 }
 
 .link-disabled {
@@ -72,6 +75,15 @@
 }
 .clearfix {
 	clear: both;
+}
+
+#directories-list {
+  border: 1px solid #ddd;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px #ccc;
+  -moz-box-shadow: 0px 0px 10px #ccc;
+  -o-box-shadow: 0px 0px 10px #ccc;
+  box-shadow: 0px 0px 10px #ccc;
 }
 
 #search {
