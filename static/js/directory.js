@@ -18,6 +18,7 @@ $( document ).ready( function() {
 				firstSearch = false;
 				$( '#breadcrumb' ).append( ' > <a id="search-breadcrumb" class="link-disabled">Search</a>' )
 				$( '#breadcrumb-leaf' ).click( function() {
+          $( '#directories-container' ).show();
 					$( '#search-overlay' ).hide();
 					$( '#search-breadcrumb' ).attr( 'href', '#' )
 					$( this ).parent().removeAttr( 'href' );
