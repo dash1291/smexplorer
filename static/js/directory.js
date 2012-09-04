@@ -36,7 +36,7 @@ $( document ).ready( function() {
 				});
 			}
 	
-			var searchUri = sitePrefix + '/search/' + text;
+			var searchUri = sitePrefix + '/search/' + text + '?path=' + dirPath;
 			console.log(searchUri);
 			$.get( searchUri, function( data ) {
 				$( '#search-overlay' ).html( '' );
