@@ -6,8 +6,11 @@
 <link rel="stylesheet" href="{{ STATIC_URL }}css/directory.css"/>
 {% endblock %}
 {% block app_content %}
+  <div id="wrap">
   <p id="branding">Access your study material anywhere. <br/>
   You don't need that hosteller friend, flash drive, etc.</p>
+
   {% include "folders.html" %}
+  </div>
 {% endblock %}
 
