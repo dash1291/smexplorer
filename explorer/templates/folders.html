@@ -9,15 +9,16 @@
   <input type="hidden" id="site-prefix" value="{{ site_prefix }}"/>
   <input type="hidden" id="remote-prefix" value="{{ remote }}"/>
   <div id="directories-list">
+  {% load se_extras %}
 {% for dir in dirs %}
     <div id="{{ dir.path }}" class="directory-item">
-      <a class="dir-link" href="{{ site_prefix }}/dir/{{ dir.path }}">{{ dir.name }}/</a>
+      <a class="dir-link" href="{{ site_prefix }}/dir/{{ dir.path }}"><div class="dir-name">{{ dir.name }}</div></a>
     </div>
 {% endfor %}
 {% for file in files %}
-    <div id="{{ file.path }}" class="file-item">
-      <a class="file-link" href="{{ remote }}{{ file.path }}">{{ file.name }}</a>
+    <div id="{{ file.path }}" class="file-item {{ file.name|getExtension }}">
+      <a class="file-link" href="{{ remote }}{{ file.path }}"><div class="file-name">{{ file.name }}</div></a>
     </div>
   {% endfor %}
   </div>
-</div>
+</div>	

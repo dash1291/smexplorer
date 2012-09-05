@@ -1,11 +1,13 @@
 html {
 	height: 100%;
-  background-color: #EFEDEA;
+	margin: 0;
+	padding: 0;
 }
 body {
-	width: 960px;
-	margin-left: 200px;
+
   height: 100%;
+  	margin: 0;
+	padding: 0;
 }
 
 .clearfix {
@@ -13,7 +15,8 @@ body {
 }
 
 #wrap {
-	margin-bottom: 0px;
+	max-width: 960px;
+	margin: 0 auto;
   min-height: 75%
 }
 
@@ -27,6 +30,7 @@ a:hover {
 
 #main {
 	position: relative;
+	min-height: 65%;
 }
 
 footer {
@@ -47,14 +51,56 @@ footer {
   font-size: 16pt;
   line-height: 1.5em;
   color: #888;
-  font-family: Georgia;
+  font-family: Arial;
 }
 
 #head-logo {
-  font-family: Verdana;
-  color: #555;
+  font-family: Arial;
+  color: #fff;
+  font-size: 25px;
+
 }
 
 #head-logo:hover {
-  color: #669999;
+  color: #E7E7E7;
 }
+#header-main{
+	background-color:black;
+	min-height: 80px;
+	  padding-top: 20px;
+	 border-bottom: solid 5px #DFDFDF;
+}
+#header-wrap{
+	max-width: 960px;
+	margin: 0 auto;
+}
+h1{
+margin: 0;
+}
+#nav-main{
+	  padding-top: 5px;
+	  margin-bottom: 85px;
+}
+#nav-wrap{
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+.toolbox-item{
+	float: right;
+	background-color: lightGrey;
+	color: white;
+}
+
+.toolbox-item a{
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+color: white;
+background: lightGrey;
+}
+
+.toolbox-item a:hover{
+background: grey;
+}
+

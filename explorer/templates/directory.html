@@ -4,15 +4,20 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/BreadCrumb.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/directory.js"></script>
 <link rel="stylesheet" href="{{ STATIC_URL }}css/directory.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/iconOverrides.css"/>
 {% endblock %}
 {% block app_content %}
+<div id="nav-main">
+	<div id="nav-wrap">
 	<div id="search">
 		<span>Search</span>
 		<input id="search-text" type="text" size="15"/>
 	</div>
-	<div class="clearfix"/>
-
 	<div id="breadcrumb"></div>
-  <div id="search-overlay"></div>
+</div>
+</div>
+
+<div id="wrap">
   {% include "folders.html" %}
+</div>
 {% endblock %}

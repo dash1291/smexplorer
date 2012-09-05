@@ -1,46 +1,59 @@
 .directories-container {
-	border-bottom: 1px solid #eee;
+	
 }
 
 .directory-item {
-	border: 1px solid #eee;
-	border-bottom: 0px;
-	transition: background-color 2s;
-	-webkit-transition: background-color 2s;
-	-moz-transition: background-color 2s;
-	-o-transition: background-color 2s;
+	margin: 5px;
+	float: left;
+	height: 160px;
+	width: 150px;
+	text-align: center;
+	background-image: url(/static/images/icons/folder.png);
+	background-position: center 20px;;
+	background-repeat: no-repeat;
 }
 
 .directory-item :hover {
+	background-image: url(/static/images/icons/folder.png);
+	background-position: center 20px;
+	background-repeat: no-repeat;
 	transition: background-color 1s;
 	-webkit-transition: background-color 1s;
 	-moz-transition: background-color 1s;
 	-o-transition: background-color 1s;
 	background-color: #F1F1FF;
+}
+
+.dir-name{
+	font-size: 12px;
+	height: 15px;
+	background: none !important;
+	text-align: center;
+	padding-top:115px;
 }
 
 .file-link, .dir-link {	
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 5px;
 	display: block;
 	height: 100%;
-}
-
-.dir-link {
 	color: #999;
 }
 
+
 .file-item {
-	border: 1px solid #eee;
-	border-bottom: 0px;
-	transition: background-color 2s;
-	-webkit-transition: background-color 2s;
-	-moz-transition: background-color 2s;
-	-o-transition: background-color 2s;
+	margin: 5px;
+	float: left;
+	height: 160px;
+	width: 150px;
+	text-align: center;
+	background-image: url(/static/images/icons/default.png);
+	background-position: center 20px;;
+	background-repeat: no-repeat;
 }
 
 .file-item :hover {
+	background-image: url(/static/images/icons/default.png);
+	background-position: center 20px;
+	background-repeat: no-repeat;
 	transition: background-color 1s;
 	-webkit-transition: background-color 1s;
 	-moz-transition: background-color 1s;
@@ -48,8 +61,37 @@
 	background-color: #F1F1FF;
 }
 
+.file-name{
+	font-size: 12px;
+	height: 15px;
+	background: none !important;
+	text-align: center;
+	padding-top:115px;
+}
+
+
 #breadcrumb {
-	margin: 10px;
+	display: inline-block;
+	float: left;
+}
+
+
+#search {
+	display: inline-block;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	float: right;
+	min-width: 20px;
+}
+#search input {
+	border: 1px solid #aaa;
+	font-size: 10pt;
+	padding: 5px;
+	min-width: 150px;
+}
+
+#search span {
+	color: #888;
 }
 
 #search-overlay {
@@ -69,7 +111,6 @@
 }
 
 #dir-tools {
-	float: right;
 	margin-right: 10px;
 	margin-bottom: 5px;
 }
@@ -78,25 +119,6 @@
 }
 
 #directories-list {
-  border: 1px solid #ddd;
-  background-color: white;
-  -webkit-box-shadow: 0px 0px 10px #ccc;
-  -moz-box-shadow: 0px 0px 10px #ccc;
-  -o-box-shadow: 0px 0px 10px #ccc;
-  box-shadow: 0px 0px 10px #ccc;
+
 }
 
-#search {
-	margin-bottom: 10px;
-	padding-left: 10px;
-	float: right;
-}
-#search input {
-	border: 1px solid #aaa;
-	font-size: 10pt;
-	padding: 5px;
-}
-
-#search span {
-	color: #888;
-}

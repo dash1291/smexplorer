@@ -1,0 +1,189 @@
+.file-item.docx, .doc{
+	background-image: url(/static/images/icons/word.png);
+}
+
+.file-item.docx :hover, .file-item.doc :hover{
+	background-image: url(/static/images/icons/word.png);
+}
+
+.file-item.pdf{
+	background-image: url(/static/images/icons/pdf.png);
+}
+
+.file-item.pdf :hover{
+	background-image: url(/static/images/icons/pdf.png);
+}
+
+.file-item.adp{
+	background-image: url(/static/images/icons/access.png);
+}
+
+.file-item.adp :hover{
+	background-image: url(/static/images/icons/access.png);
+}
+
+.file-item.avi{
+	background-image: url(/static/images/icons/avi.png);
+}
+
+.file-item.avi :hover{
+	background-image: url(/static/images/icons/avi.png);
+}
+
+.file-item.bmp{
+	background-image: url(/static/images/icons/bmp.png);
+}
+
+.file-item.bmp :hover{
+	background-image: url(/static/images/icons/bmp.png);
+}
+
+.file-item.css{
+	background-image: url(/static/images/icons/css.png);
+}
+
+.file-item.css :hover{
+	background-image: url(/static/images/icons/css.png);
+}
+
+.file-item.dll{
+	background-image: url(/static/images/icons/dll.png);
+}
+
+.file-item.dll :hover{
+	background-image: url(/static/images/icons/dll.png);
+}
+
+.file-item.xls, .file-item.xlsx, .file-item.xlsm, .file-item.xlsb{
+	background-image: url(/static/images/icons/excel.png);
+}
+
+.file-item.xls :hover, .file-item.xlsx :hover, .file-item.xlsm :hover, .file-item.xlsb :hover{
+	background-image: url(/static/images/icons/excel.png);
+}
+
+
+.file-item.gif{
+	background-image: url(/static/images/icons/gif.png);
+}
+
+.file-item.gif :hover{
+	background-image: url(/static/images/icons/gif.png);
+}
+
+
+.file-item.html, .file-item.htm{
+	background-image: url(/static/images/icons/html.png);
+}
+
+.file-item.html :hover, .file-item.htm :hover{
+	background-image: url(/static/images/icons/html.png);
+}
+
+
+.file-item.ini{
+	background-image: url(/static/images/icons/ini.png);
+}
+
+.file-item.ini :hover{
+	background-image: url(/static/images/icons/ini.png);
+}
+
+
+.file-item.jpg, .file-item.jpeg{
+	background-image: url(/static/images/icons/jpg.png);
+}
+
+.file-item.jpg :hover, .file-item.jpeg :hover{
+	background-image: url(/static/images/icons/jpg.png);
+}
+
+
+.file-item.js{
+	background-image: url(/static/images/icons/js.png);
+}
+
+.file-item.js :hover{
+	background-image: url(/static/images/icons/js.png);
+}
+
+
+.file-item.mov{
+	background-image: url(/static/images/icons/mov.png);
+}
+
+.file-item.mov :hover{
+	background-image: url(/static/images/icons/mov.png);
+}
+
+
+.file-item.mp3{
+	background-image: url(/static/images/icons/mp3.png);
+}
+
+.file-item.mp3 :hover{
+	background-image: url(/static/images/icons/mp3.png);
+}
+
+
+.file-item.mpg, .file-item.mpeg{
+	background-image: url(/static/images/icons/mpg.png);
+}
+
+.file-item.mpg :hover, .file-item.mpeg :hover{
+	background-image: url(/static/images/icons/mpg.png);
+}
+
+
+.file-item.png{
+	background-image: url(/static/images/icons/png.png);
+}
+
+.file-item.png :hover{
+	background-image: url(/static/images/icons/png.png);
+}
+
+
+.file-item.reg{
+	background-image: url(/static/images/icons/reg.png);
+}
+
+.file-item.reg :hover{
+	background-image: url(/static/images/icons/reg.png);
+}
+
+
+.file-item.rtf{
+	background-image: url(/static/images/icons/rtf.png);
+}
+
+.file-item.rtf :hover{
+	background-image: url(/static/images/icons/rtf.png);
+}
+
+
+.file-item.txt{
+	background-image: url(/static/images/icons/txt.png);
+}
+
+.file-item.txt :hover{
+	background-image: url(/static/images/icons/txt.png);
+}
+
+
+.file-item.xml{
+	background-image: url(/static/images/icons/xml.png);
+}
+
+.file-item.xml :hover{
+	background-image: url(/static/images/icons/xml.png);
+}
+
+
+.file-item.ppt, .file-item.pptx, .file-item.pptb {
+	background-image: url(/static/images/icons/mov.png);
+}
+
+.file-item.ppt :hover, .file-item.pptx :hover, .file-item.pptb :hover{
+	background-image: url(/static/images/icons/mov.png);
+}
