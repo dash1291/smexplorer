@@ -134,7 +134,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sme.explorer',
     'sme.sync',
-    #'djcelery'
+    'tastypie',
+    'djcelery'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
