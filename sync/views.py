@@ -7,7 +7,7 @@ from django.template.loader import get_template
 from django.views.decorators.csrf import csrf_exempt
 
 from explorer.models import File, Directory
-from sync.tasks import bulk_upload_DB
+from sync.tasks import bulk_upload_DB, repairDB
 import filesystem as fs
 from helpers import create_hierarchy
 import storage_ebs
@@ -73,6 +73,8 @@ def bulk_upload(request):
 
         files = json.loads(file_data_str)
         bulk_upload_DB.async_apply([files])
+        repairDB.async_apply()
+
     response = HttpResponse('Done') 
     return response
 
