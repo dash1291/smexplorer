@@ -1,3 +1,7 @@
+from datetime import datetime, date
+import os
+import os.path
+
 from celery import task
 
 from explorer.models import File
@@ -27,18 +31,19 @@ def bulk_upload_DB(files):
 def repairDB():
     files_dir = os.path.join(APP_STORAGE_PATH, 'files')
     for root, dirs, files in os.walk(files_dir):
-        file_path = os.path.join(root, name)
-        remote_path = file_path.strip(files_dir + '/')
-        date_str = date.fromtimestamp(os.path.getmtime(file_path))
-        size = os.path.getsize(file_path)
-        last_modified = datetime.strptime(date_str, '%Y-%m-%d')
-        name = fs.file_name(remote_path)
-        remote_parent = fs.parent_path(remote_path)
-        remote_dir = create_hierarchy(remote_parent)
-
-        try:
-            tmp_file = File.objects.get(name=name, path=remote_dir)
-        except:
-            new_file = File(name=name, path=remote_dir,
-                    size=size, last_modified=last_modified)
-            new_file.save()
+        for f in files:
+            file_path = os.path.join(root, f)
+            remote_path = file_path.strip(files_dir + '/')
+            date_str = str(date.fromtimestamp(os.path.getmtime(file_path)))
+            size = os.path.getsize(file_path)
+            last_modified = datetime.strptime(date_str, '%Y-%m-%d')
+            name = os.path.basename(remote_path)
+            remote_parent = fs.parent_path(remote_path)
+            remote_dir = create_hierarchy(remote_parent)
+            try:
+                tmp_file = File.objects.get(name=name, path=remote_dir)
+                print tmp_file
+            except:
+                new_file = File(name=name, path=remote_dir,
+                        size=size, last_modified=last_modified)
+                new_file.save()
