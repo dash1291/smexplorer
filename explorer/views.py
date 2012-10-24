@@ -6,51 +6,64 @@ from django.shortcuts import render, redirect
 
 from explorer.models import File, Directory
 from explorer.tasks import delete_archive
-from settings import REMOTE_PREFIX, SITE_PREFIX, APP_STORAGE_URL
+from explorer.helpers import dir_fallback
+from settings import REMOTE_PREFIX, SITE_PREFIX, APP_STORAGE_URL, DIR_BROWSE_FALLBACK
 import filesystem as fs
 import storage_ebs as storage
 
 def index(request):
-    path_regex = '^' + '[^/]+$'
-    context_dirs = []
-    try:
-        dirs = Directory.objects.filter(path__regex=path_regex)
-    except:
-        pass
-    for single in dirs:
-        context_dirs.append({'path': single.path,
-            'name': fs.file_name('/' + single.path)})
+    ctx_data = {'dirs': [], 'files': []}
 
-    response = render(request, 'index.html', {'dirs': context_dirs})
+    if DIR_BROWSE_FALLBACK == True:
+        ctx_data = dir_fallback('.')
+    else:
+        path_regex = '^' + '[^/]+$'
+        context_dirs = []
+        try:
+            dirs = Directory.objects.filter(path__regex=path_regex)
+        except:
+            pass
+        for single in dirs:
+            ctx_data['dirs'].append({'path': single.path,
+                'name': fs.file_name('/' + single.path)})
+
+    ctx_data['remote'] = REMOTE_PREFIX
+    response = render(request, 'index.html', ctx_data)
     return response
 
 def view_directory(request, path):
-    parent_path = fs.parent_path(path)
-    context_files = []
-    context_dirs = []
-    dirs = []
-    files = []
-    path_regex = '^' + path + '/[^/]+$'
-    try:
-        d = Directory.objects.get(path=path)
-    except:
-        return HttpResponse('Not Found')
-    try:
-        dirs = Directory.objects.filter(path__regex=path_regex)
-    except:
-        pass
-    for single in dirs:
-        context_dirs.append({'path': single.path,
-            'name': fs.file_name(single.path)})
-    files = File.objects.filter(path=d)
-    for single in files:
-        file_path = single.path.path + '/' + single.name
-        context_files.append({'path': file_path,
-            'name': single.name})
-    
-    response = render(request, 'directory.html', {'dir_path': path, 
-    'remote': REMOTE_PREFIX, 'dirs': context_dirs,
-    'files': context_files})
+    ctx_data = {'dirs': [], 'files': []}
+
+    if DIR_BROWSE_FALLBACK == True:
+        ctx_data = dir_fallback(path)
+
+    else:    
+        parent_path = fs.parent_path(path)
+        context_files = []
+        context_dirs = []
+        dirs = []
+        files = []
+        path_regex = '^' + path + '/[^/]+$'
+        try:
+            d = Directory.objects.get(path=path)
+        except:
+            return HttpResponse('Not Found')
+        try:
+            dirs = Directory.objects.filter(path__regex=path_regex)
+        except:
+            pass
+        for single in dirs:
+            ctx_data['dirs'].append({'path': single.path,
+                'name': fs.file_name(single.path)})
+        files = File.objects.filter(path=d)
+        for single in files:
+            file_path = single.path.path + '/' + single.name
+            ctx_data['files'].append({'path': file_path,
+                'name': single.name})
+        
+    ctx_data['remote'] = REMOTE_PREFIX
+    ctx_data['dir_path'] = path
+    response = render(request, 'directory.html', ctx_data)
     return response
 
 def search(request, text):

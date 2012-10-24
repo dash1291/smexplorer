@@ -121,7 +121,7 @@ sys.path.append(os.path.join(APP_DIR, 'lib'))
 TEMP_FILE_STORE = os.path.join(APP_DIR, 'tmp')
 REMOTE_PREFIX = 'https://s3.amazonaws.com/smecloudstore/'
 APP_STORAGE_URL = '/store/'
-APP_STORAGE_PATH = './storage/'
+APP_STORAGE_PATH = os.path.join(APP_DIR, 'storage')
 SITE_PREFIX = '/'
 #REMOTE_PREFIX = "/store/"
 
@@ -167,3 +167,4 @@ LOGGING = {
 
 BROKER_URL = 'redis://127.0.0.1:6379/0'
 CELERY_IMPORTS = ('explorer.tasks', 'sync.tasks',)
+DIR_BROWSE_FALLBACK = True
