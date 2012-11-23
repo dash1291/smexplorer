@@ -20,23 +20,27 @@ def handle_upload(request):
         date_str = str(request.POST['last_modified'])
         last_modified = datetime.strptime(date_str, '%Y-%m-%d')
         f = request.FILES['file']
+
         temp_path = fs.save_from_upload(remote_path, f)
         file_info = fs.file_info(temp_path)
-        remote_parent = fs.parent_path(remote_path)
+
+        remote_parent = os.path.dirname(remote_path)
         
         remote_dir = create_hierarchy(remote_parent)
         new_file = File(name=file_info['name'], path=remote_dir,
-                    size=file_info['size'],
-                    last_modified=last_modified)
+                        size=file_info['size'],
+                        last_modified=last_modified)
         new_file.save()
         storage_ebs.upload_file(temp_path, remote_path)
+
         response = render(request, 'response.xml',
-                    {'status': '1', 'message': 'File uploaded successfully.'},
-                    content_type='text/xml')
+                   {'status': '1', 'message': 'File uploaded successfully.'},
+                   content_type='text/xml')
     else:
         response = render(request, 'response.xml',
                    {'status': '0', 'message': 'Use POST for file uploads.'},
                    content_type='text/xml')
+    
     return response
 
 @csrf_exempt
@@ -44,6 +48,7 @@ def handle_delete(request):
     if request.method == 'POST':
         remote_path = request.POST['path']
         name = request.POST['name']
+       
         try:
             tmp_file = Files.objects.get(path=path, name=name)
         except:
@@ -52,6 +57,7 @@ def handle_delete(request):
                        content_type='text/xml')
             return response
         tmp_file.delete()
+       
         response = render(request, 'response.xml',
                    {'status': '1', 'message': 'File deleted.'},
                    content_type='text/xml')
@@ -60,6 +66,7 @@ def handle_delete(request):
         response = render(request, 'response.xml',
                    {'status': '0', 'message': 'Use POST for file delete.'},
                    content_type='text/xml')
+    
     return response
 
 @csrf_exempt
@@ -72,10 +79,10 @@ def bulk_upload(request):
             file_data_str = file_data_str + chunk
 
         files = json.loads(file_data_str)
-        bulk_upload_DB.async_apply([files])
-        repairDB.async_apply()
+        bulk_upload_DB.apply_async([files])
+        #repairDB.apply_async()
 
-    response = HttpResponse('Done') 
+    response = HttpResponse('Done')
     return response
 
 @csrf_exempt

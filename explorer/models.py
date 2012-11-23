@@ -1,7 +1,7 @@
 from django.db import models
 
 class Directory(models.Model):
-    path = models.TextField(primary_key=True)
+    path = models.TextField()
     
     def __unicode__(self):
         return self.path

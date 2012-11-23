@@ -1,5 +1,6 @@
 import json
 import re
+import os.path
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -8,7 +9,6 @@ from explorer.models import File, Directory
 from explorer.tasks import delete_archive
 from explorer.helpers import dir_fallback
 from settings import REMOTE_PREFIX, SITE_PREFIX, APP_STORAGE_URL, DIR_BROWSE_FALLBACK
-import filesystem as fs
 import storage_ebs as storage
 
 def index(request):
@@ -17,28 +17,41 @@ def index(request):
     if DIR_BROWSE_FALLBACK == True:
         ctx_data = dir_fallback('.')
     else:
-        path_regex = '^' + '[^/]+$'
+        path_regex = '^' + '/[^/]+$'
         context_dirs = []
         try:
             dirs = Directory.objects.filter(path__regex=path_regex)
         except:
             pass
+
+        try:
+            directory = Directory.objects.get(path='/')
+            files = File.objects.filter(path=directory)
+        except:
+            pass
+
         for single in dirs:
-            ctx_data['dirs'].append({'path': single.path,
-                'name': fs.file_name('/' + single.path)})
+            ctx_data['dirs'].append({'path': single.path[1:],
+                'name': os.path.basename('/' + single.path)})
+
+        for single in files:
+            ctx_data['files'].append({'path': os.path.join(single.path.path[1:], single.name), 'name': single.name})
 
     ctx_data['remote'] = REMOTE_PREFIX
+    ctx_data['site_prefix'] = SITE_PREFIX
     response = render(request, 'index.html', ctx_data)
     return response
 
 def view_directory(request, path):
     ctx_data = {'dirs': [], 'files': []}
 
+    path = '/' + path
+
     if DIR_BROWSE_FALLBACK == True:
         ctx_data = dir_fallback(path)
 
     else:    
-        parent_path = fs.parent_path(path)
+        parent_path = os.path.dirname(path)
         context_files = []
         context_dirs = []
         dirs = []
@@ -53,16 +66,17 @@ def view_directory(request, path):
         except:
             pass
         for single in dirs:
-            ctx_data['dirs'].append({'path': single.path,
-                'name': fs.file_name(single.path)})
+            ctx_data['dirs'].append({'path': single.path[1:],
+                'name': os.path.basename(single.path)})
         files = File.objects.filter(path=d)
         for single in files:
-            file_path = single.path.path + '/' + single.name
+            file_path = os.path.join(single.path.path[1:], single.name)
             ctx_data['files'].append({'path': file_path,
                 'name': single.name})
         
     ctx_data['remote'] = REMOTE_PREFIX
-    ctx_data['dir_path'] = path
+    ctx_data['dir_path'] = path[1:]
+    ctx_data['site_prefix'] = SITE_PREFIX
     response = render(request, 'directory.html', ctx_data)
     return response
 
@@ -80,9 +94,9 @@ def search(request, text):
     res_files = []
 
     for dir in dirs:
-        folder_name = fs.file_name(dir.path)
+        folder_name = os.path.basename(dir.path)
         if re.search(regex, folder_name, re.I):
-            res_dirs.append({'path': dir.path, 'name': fs.file_name(dir.path)})
+            res_dirs.append({'path': dir.path, 'name': os.path.basename(dir.path)})
     for file in files:
         if search_path in file.get_full_path():
             res_files.append({'path': file.path.path, 'name': file.name})
@@ -93,5 +107,5 @@ def search(request, text):
 def archive(request, path):
     zip_path = storage.create_archive(path)
     response = SITE_PREFIX + APP_STORAGE_URL + zip_path
-    delete_archive.async_apply([zip_path], countdown=100)
+    delete_archive.apply_apply([zip_path], countdown=100)
     return redirect(response)

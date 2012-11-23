@@ -1,13 +1,12 @@
-from explorer.views import Directory
+from explorer.models import Directory
 
 def create_hierarchy(path):
     path_tokens = path.split('/')
-    
-    traversed = ''
+    traversed = '/'
     for token in path_tokens:
         traversed = traversed + token
         try:
-            new_dir = Directory.object.get(path=traversed)
+            new_dir = Directory.objects.get(path=traversed)
         except:
             new_dir = Directory(path=traversed)
             new_dir.save()
