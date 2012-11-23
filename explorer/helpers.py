@@ -21,7 +21,7 @@ def dir_fallback(path):
 
         for d in dirs:
             dir_path = os.path.join(root, d)
-            remote_path = dir_path[len(files_dir + '/'):]
+            remote_path = dir_path[len(APP_STORAGE_PATH + '/files/'):]
             name = os.path.basename(remote_path)
             dirs_data.append({'name': name, 'path': remote_path})
         break
