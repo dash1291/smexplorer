@@ -167,6 +167,7 @@ LOGGING = {
 
 BROKER_URL = 'redis://127.0.0.1:6379/0'
 CELERY_IMPORTS = ('explorer.tasks', 'sync.tasks',)
+DIR_BROWSE_FALLBACK = False
 
 try:
     from local_settings import *
