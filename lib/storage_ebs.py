@@ -12,5 +12,5 @@ def upload_file(local_path, remote_path):
 def create_archive(path):
     shutil.make_archive(os.path.join(APP_STORAGE_PATH,
     								 'archives', os.path.basename(path)),
-            			'zip', os.path.join(APP_STORAGE_PATH, 'files', path)
+            			'zip', os.path.join(APP_STORAGE_PATH, 'files', path))
     return os.path.join('archives', os.path.basename(path) + '.zip')
