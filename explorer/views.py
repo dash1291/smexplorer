@@ -11,6 +11,7 @@ from explorer.helpers import dir_fallback
 from settings import REMOTE_PREFIX, SITE_PREFIX, APP_STORAGE_URL, DIR_BROWSE_FALLBACK
 import storage_ebs as storage
 
+
 def index(request):
     ctx_data = {'dirs': [], 'files': []}
 
@@ -107,5 +108,5 @@ def search(request, text):
 def archive(request, path):
     zip_path = storage.create_archive(path)
     response = SITE_PREFIX + APP_STORAGE_URL + zip_path
-    delete_archive.apply_apply([zip_path], countdown=100)
+    delete_archive.apply_async([zip_path], countdown=100)
     return redirect(response)
