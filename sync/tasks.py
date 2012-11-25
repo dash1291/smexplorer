@@ -37,7 +37,7 @@ def get_files():
             remote_path = file_path[len(files_dir + '/'):]
             date_str = str(date.fromtimestamp(os.path.getmtime(file_path)))
             size = os.path.getsize(file_path)
-            out_files.append({'path': remote_path, 'last_modfied': date_str,
+            out_files.append({'path': remote_path, 'last_modified': date_str,
                           'size': size})
     
     return out_files
