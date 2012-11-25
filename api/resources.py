@@ -13,7 +13,7 @@ class DirectoryResource(ModelResource):
     def dehydrate(self, bundle):
         d = bundle.obj
         files_query = d.file_set.all()
-        dirs_query = Directory.objects.filter(path__regex='^' + os.path.join(d.path + '[^/]+$'))
+        dirs_query = Directory.objects.filter(path__regex='^' + os.path.join(d.path, '[^/]+$'))
 
         files = []
         dirs = []
