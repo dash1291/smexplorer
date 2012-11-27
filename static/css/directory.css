@@ -1,5 +1,7 @@
-.directories-container {
-	
+#directories-container {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .directory-item {
