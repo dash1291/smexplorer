@@ -48,10 +48,10 @@ footer {
 
 #branding {
   margin: 25px 0px 20px 0px;
-  font-size: 16pt;
+  font-size: 18pt;
   line-height: 1.5em;
   color: #888;
-  font-family: Arial;
+  font-family: 'Georgia', sans-serif;
 }
 
 #head-logo {
@@ -104,3 +104,9 @@ background: lightGrey;
 background: grey;
 }
 
+#logo-legend {
+	float: right;
+	margin: 35px 10px;
+	color: #AAA;
+	font-family: 'Georgia';
+}

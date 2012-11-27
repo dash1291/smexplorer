@@ -32,6 +32,7 @@
 	background: none !important;
 	text-align: center;
 	padding-top:115px;
+	font-family: 'Verdana'
 }
 
 .file-link, .dir-link {	
@@ -69,6 +70,7 @@
 	background: none !important;
 	text-align: center;
 	padding-top:115px;
+	font-family: 'Verdana'
 }
 
 
@@ -119,3 +121,6 @@
 
 }
 
+#breadcrumb {
+	font-family: 'Verdana';
+}
