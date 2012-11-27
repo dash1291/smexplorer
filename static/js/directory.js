@@ -43,20 +43,21 @@ $( document ).ready( function() {
 				for( i in data.directories ) {
 					var name = data.directories[ i ].name;
 					var path = data.directories[ i ].path;
-					element = '<div class="dir-search-item directory-item">' +
-						'<a class="dir-link" href="' + sitePrefix + '/dir/' + path + '">' +
-							name + '/' + '</a>' +
-						'</div>';
+					var element	= '<div id="' + path + '" class="dir-search-item directory-item">' +
+      					'<a class="dir-link" href="' + sitePrefix + '/dir/' + path + '"><div class="dir-name">' + name + '</div></a></div>';
 					$( '#search-overlay' ).append( element );
 				}
 
 				for( i in data.files ) {
 					var name = data.files[ i ].name;
 					var path = data.files[ i ].path;
+					var ext = name.slice(-3);
 					element = '<div class="file-search-item file-item">' +
 						'<a class="file-link" href="' + remotePrefix + path + '/' + name + '">' +
 							name + '</a>' +
 						'</div>';
+					var element = '<div id="' + path + '" class="file-search-item file-item ' + ext + '">' + 
+      					'<a class="file-link" href="' + remotePrefix + path + '/' + name + '"><div class="file-name">' + name + '</div></a></div>';
 					$( '#search-overlay' ).append( element );
 				}
 				$( '#search-overlay' ).show();
