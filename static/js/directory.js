@@ -38,7 +38,9 @@ $( document ).ready( function() {
 	
 			var searchUri = sitePrefix + '/search/' + text + '?path=' + dirPath;
 			console.log(searchUri);
+			requestStart();
 			$.get( searchUri, function( data ) {
+				requestComplete();
 				$( '#search-overlay' ).html( '' );
 				for( i in data.directories ) {
 					var name = data.directories[ i ].name;

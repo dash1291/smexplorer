@@ -2,7 +2,8 @@
 <html>
 	<head>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css"/>
-
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.2.min.js"></script>
+    <script src="{{ STATIC_URL }}js/common.js"></script>
     <script type="text/javascript">
 
       var _gaq = _gaq || [];
@@ -21,6 +22,9 @@
     <title>SM Explorer</title>
   </head>
 	<body>
+  <div id="loading" class="dialogue">
+    <img src="{{ STATIC_URL }}images/spinner.gif">
+  </div>
 		<div id="header-main">
 			<div id="header-wrap">
 				<header>

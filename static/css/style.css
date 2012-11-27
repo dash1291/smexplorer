@@ -110,3 +110,15 @@ background: grey;
 	color: #AAA;
 	font-family: 'Georgia';
 }
+
+div.dialogue {
+  display: none;
+  position: absolute;
+  z-index: 100;
+}
+
+#loading {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}
